@@ -9,15 +9,25 @@ def start():
     response = input("Press any button to start, or Q to quit: ")
     if(response=="Q" or response=="q"):
         quit()
-    else:
-        print("GAME")
+    
+    secret = randCode()
+    currentRound = 1
+    won = False
+    while currentRound < maxRound or won:
+        response = input("Guess the code... ")
+        result = codeTest(secret, response)
 
+def randCode():
+    colours = ["B","G","M","O","P","Y"]
+    random.shuffle(colours)
+    colours.pop()
+    colours.pop()
+    return(colours)
 
 def roundDisplay(result, roundNum, code):
     print("Round          " + result[0] + " " + result[1])
     print("No. " + str(roundNum) + "   " + code)
     print("  " + str(maxRound) + "            " + result[2] + " " + result[3])
-
 
 def codeTest(secret, response):
     i = 0
