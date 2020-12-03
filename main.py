@@ -1,4 +1,6 @@
+import random
 
+codeLength = 4
 maxRound = 8
 
 def start():
@@ -9,11 +11,26 @@ def start():
         quit()
     else:
         print("GAME")
+
+
 def roundDisplay(result, roundNum, code):
     print("Round          " + result[0] + " " + result[1])
     print("No. " + str(roundNum) + "   " + code)
     print("  " + str(maxRound) + "            " + result[2] + " " + result[3])
 
-#result = ["W", "W", "R", " "]
-#roundNum = 1
-#code = "BGMO"
+
+def codeTest(secret, response):
+    i = 0
+    result = []
+    while i < codeLength:
+        if response[i] not in secret:
+            result.append(" ")
+        elif response[i] == secret[i]:
+            result.append("R")
+        else:
+            result.append("W")
+        i += 1
+    random.shuffle(result)
+    return(result)
+
+    
