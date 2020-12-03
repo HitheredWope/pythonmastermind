@@ -21,8 +21,10 @@ def start():
         else:
             roundDisplay(result,currentRound,response)
         currentRound += 1
+    print("YOU LOSE :( ")
 
 def randCode():
+    '''Generated the random code for the user to guess'''
     colours = ["B","G","M","O","P","Y"]
     random.shuffle(colours)
     colours.pop()
@@ -30,11 +32,16 @@ def randCode():
     return(colours)
 
 def roundDisplay(result, roundNum, code):
-    print("Round          " + result[0] + " " + result[1])
+    '''Basic CLI output formatting'''
+    print("Round           " + result[0] + " " + result[1])
     print("No. " + str(roundNum) + "   " + code)
-    print("  " + str(maxRound) + "            " + result[2] + " " + result[3])
+    print("of " + str(maxRound) + "            " + result[2] + " " + result[3])
 
 def codeTest(secret, response):
+    ''' Takes the users input and the predefined secret
+        Returns " " if guess isn't in the secret
+        Returns "W" if guess is in the secret but in the wrong location
+        Returns "R" if guess is in the secret and in the correct location'''
     i = 0
     result = []
     while i < codeLength:
