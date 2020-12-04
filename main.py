@@ -14,6 +14,7 @@ def start():
     won = False
     while currentRound < maxRound and not won:
         response = input("Guess the code... ")
+        response = response.upper() #convert their guess into uppercase
         result = codeTest(secret, response)
         if result == ["R", "R", "R", "R"]:
             won = True
