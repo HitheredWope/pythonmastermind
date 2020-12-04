@@ -19,10 +19,11 @@ def start():
         if result == ["R", "R", "R", "R"]:
             won = True
             print("YOU WON!")
-        else:
-            roundDisplay(result,currentRound,response)
+        elif currentRound == maxRound:
             print("You Lost!")
             print("Correct code was: " + str(secret))
+        else:
+            roundDisplay(result,currentRound,response)
         currentRound += 1
 
 def randCode():
