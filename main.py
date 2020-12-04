@@ -12,7 +12,7 @@ def start():
     secret = randCode()
     currentRound = 1
     won = False
-    while currentRound < maxRound and not won:
+    while currentRound <= maxRound and not won:
         response = input("Guess the code... ")
         response = response.upper() #convert their guess into uppercase
         result = codeTest(secret, response)
@@ -21,8 +21,9 @@ def start():
             print("YOU WON!")
         else:
             roundDisplay(result,currentRound,response)
+            print("You Lost!")
+            print("Correct code was: " + str(secret))
         currentRound += 1
-    print("YOU LOSE :( ")
 
 def randCode():
     '''Generated the random code for the user to guess'''
@@ -31,6 +32,7 @@ def randCode():
     colours.pop()
     colours.pop()
     return(colours)
+
 
 def roundDisplay(result, roundNum, code):
     '''Basic CLI output formatting'''
